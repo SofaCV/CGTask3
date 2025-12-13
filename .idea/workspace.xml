@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7879729e-fc45-432b-a23e-9d78bb407add" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Matrix/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Matrix3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Matrix/Matrix3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Matrix4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Matrix/Matrix4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Matrix/Matrix4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Matrix/Matrix4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Math/MatrixAndVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/MatrixAndVector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Vector/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Vector2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Vector/Vector2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Vector3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Vector/Vector3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Math/Vector4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Math/Vector/Vector4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Math/Matrix4Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Math/Matrix4Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +40,7 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "OverrideImplement.generate.javadoc": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",

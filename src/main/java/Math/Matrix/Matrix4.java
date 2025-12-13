@@ -7,9 +7,10 @@ public class Matrix4 extends Matrix {
     private float value30, value31, value32, value33;
 
     private float[][] matrix = {
-            {value00,value01,value02},
-            {value10, value11, value12},
-            {value20, value21, value22}
+            {value00,value01,value02, value03},
+            {value10, value11, value12, value13},
+            {value20, value21, value22, value23},
+            {value30, value31, value32, value33}
     };
 
     public Matrix4(float value00, float value01, float value02, float value03,
@@ -33,5 +34,9 @@ public class Matrix4 extends Matrix {
         this.value31 = value31;
         this.value32 = value32;
         this.value33 = value33;
+    }
+
+    public float[][] getMatrix() {
+        return matrix;
     }
 }

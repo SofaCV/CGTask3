@@ -1,16 +1,16 @@
 package Math;
 
 public interface MatrixAndVector {
-    //сложение матриц
-    float[][] add(float[][] firstMatrix, float[][] secondMatrix);
+    //сложение
+    float[][] add(float[][] firstObject, float[][] secondObject);
 
-    //разность матриц
-    float[][] subtract(float[][] firstMatrix, float[][] secondMatrix);
+    //разность
+    float[][] subtract(float[][] firstObject, float[][] secondObject);
 
     //умножение на скаляр
-    float[][] multiByScalar(float[][] matrix, float scalar);
+    float[][] multiByScalar(float[][] object, float scalar);
 
     //деление на скаляр
-    float[][] divByScalar(float[][] matrix, float scalar);
+    float[][] divByScalar(float[][] object, float scalar);
 
 }
