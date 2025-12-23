@@ -1,8 +1,6 @@
 package Math.Matrix;
 
-import Math.Vector.Vector2;
-
-public class Matrix3 extends Matrix {
+public class Matrix3 {
     private float value00, value01, value02;
     private float value10, value11, value12;
     private float value20, value21, value22;
@@ -35,7 +33,7 @@ public class Matrix3 extends Matrix {
         checkArguments(firstMatrix);
         checkArguments(secondMatrix);
 
-        float[][] res = Matrix3.add(firstMatrix.getMatrix(),secondMatrix.getMatrix());
+        float[][] res = Matrix.add(firstMatrix.getMatrix(),secondMatrix.getMatrix());
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],
                 res[1][0], res[1][1], res[1][2],
@@ -48,7 +46,7 @@ public class Matrix3 extends Matrix {
         checkArguments(firstMatrix);
         checkArguments(secondMatrix);
 
-        float[][] res = Matrix3.subtract(firstMatrix.getMatrix(),secondMatrix.getMatrix());
+        float[][] res = Matrix.subtract(firstMatrix.getMatrix(),secondMatrix.getMatrix());
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],
                 res[1][0], res[1][1], res[1][2],
@@ -59,7 +57,7 @@ public class Matrix3 extends Matrix {
     //умножение на скаляр
     public static Matrix3 multiByScalar(Matrix3 matrix, float scalar) {
         checkArguments(matrix);
-        float[][] res = Matrix3.multiByScalar(matrix.getMatrix(),scalar);
+        float[][] res = Matrix.multiByScalar(matrix.getMatrix(),scalar);
 
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],
@@ -74,7 +72,7 @@ public class Matrix3 extends Matrix {
             throw new ArithmeticException("Деление на ноль невозможно");
         }
         checkArguments(matrix);
-        float[][] res = Matrix3.divByScalar(matrix.getMatrix(),scalar);
+        float[][] res = Matrix.divByScalar(matrix.getMatrix(),scalar);
 
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],
@@ -86,7 +84,7 @@ public class Matrix3 extends Matrix {
     //транспонирование
     public static Matrix3 transposition(Matrix3 matrix) {
         checkArguments(matrix);
-        float[][] res = Matrix3.transposition(matrix.getMatrix());
+        float[][] res = Matrix.transposition(matrix.getMatrix());
 
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],

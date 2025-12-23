@@ -13,8 +13,8 @@ public class Vector4 {
         this.w = w;
     }
 
-    public float[][] getVector() {
-        return new float[][]{{x}, {y}, {z}, {w}};
+    public float[] getVector() {
+        return new float[]{x, y, z, w};
     }
 
     //сложение
@@ -22,9 +22,8 @@ public class Vector4 {
         checkArguments(firstVector);
         checkArguments(secondVector);
 
-        float[][] res;
-        res = Vector.add(firstVector.getVector(), secondVector.getVector());
-        return new Vector4(res[0][0], res[1][0], res[2][0], res[3][0]);
+        float[] res = Vector.add(firstVector.getVector(), secondVector.getVector());
+        return new Vector4(res[0], res[1], res[2], res[3]);
     }
 
     //разность
@@ -32,18 +31,16 @@ public class Vector4 {
         checkArguments(firstVector);
         checkArguments(secondVector);
 
-        float[][] res;
-        res = Vector.subtract(firstVector.getVector(), secondVector.getVector());
-        return new Vector4(res[0][0], res[1][0], res[2][0], res[3][0]);
+        float[] res = Vector.subtract(firstVector.getVector(), secondVector.getVector());
+        return new Vector4(res[0], res[1], res[2], res[3]);
     }
 
     //умножение на скаляр
     public static Vector4 multiByScalar(Vector4 vector, float scalar) {
         checkArguments(vector);
 
-        float[][] res;
-        res = Vector.multiByScalar(vector.getVector(), scalar);
-        return new Vector4(res[0][0], res[1][0], res[2][0], res[3][0]);
+        float[] res = Vector.multiByScalar(vector.getVector(), scalar);
+        return new Vector4(res[0], res[1], res[2], res[3]);
     }
 
     //деление на скаляр
@@ -54,9 +51,8 @@ public class Vector4 {
             throw new ArithmeticException("Деление на ноль невозможно");
         }
 
-        float[][] res;
-        res = Vector.divByScalar(vector.getVector(), scalar);
-        return new Vector4(res[0][0], res[1][0], res[2][0], res[3][0]);
+        float[] res = Vector.divByScalar(vector.getVector(), scalar);
+        return new Vector4(res[0], res[1], res[2], res[3]);
     }
 
     //длина
@@ -70,9 +66,8 @@ public class Vector4 {
     public static Vector4 normalization(Vector4 vector) {
         checkArguments(vector);
 
-        float[][] res;
-        res = Vector.normalization(vector.getVector());
-        return new Vector4(res[0][0], res[1][0], res[2][0], res[3][0]);
+        float[] res = Vector.normalization(vector.getVector());
+        return new Vector4(res[0], res[1], res[2], res[3]);
     }
 
     //скалярное произведение

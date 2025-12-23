@@ -1,6 +1,6 @@
 package Math.Matrix;
 
-public class Matrix4 extends Matrix {
+public class Matrix4 {
     private float value00, value01, value02, value03;
     private float value10, value11, value12, value13;
     private float value20, value21, value22, value23;
@@ -43,7 +43,7 @@ public class Matrix4 extends Matrix {
         checkArguments(firstMatrix);
         checkArguments(secondMatrix);
 
-        float[][] res = Matrix4.add(firstMatrix.getMatrix(),secondMatrix.getMatrix());
+        float[][] res = Matrix.add(firstMatrix.getMatrix(),secondMatrix.getMatrix());
 
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],
@@ -58,7 +58,7 @@ public class Matrix4 extends Matrix {
         checkArguments(firstMatrix);
         checkArguments(secondMatrix);
 
-        float[][] res = Matrix4.subtract(firstMatrix.getMatrix(),secondMatrix.getMatrix());
+        float[][] res = Matrix.subtract(firstMatrix.getMatrix(),secondMatrix.getMatrix());
 
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],
@@ -72,7 +72,7 @@ public class Matrix4 extends Matrix {
     public static Matrix4 multiByScalar(Matrix4 matrix, float scalar) {
         checkArguments(matrix);
 
-        float[][] res = Matrix4.multiByScalar(matrix.getMatrix(),scalar);
+        float[][] res = Matrix.multiByScalar(matrix.getMatrix(),scalar);
 
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],
@@ -88,7 +88,7 @@ public class Matrix4 extends Matrix {
         if (scalar == 0) {
             throw new ArithmeticException("Деление на ноль невозможно");
         }
-        float[][] res = Matrix4.divByScalar(matrix.getMatrix(),scalar);
+        float[][] res = Matrix.divByScalar(matrix.getMatrix(),scalar);
 
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],
@@ -101,7 +101,7 @@ public class Matrix4 extends Matrix {
     //транспонирование
     public static Matrix4 transposition(Matrix4 matrix) {
         checkArguments(matrix);
-        float[][] res = Matrix4.transposition(matrix.getMatrix());
+        float[][] res = Matrix.transposition(matrix.getMatrix());
 
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],

@@ -11,8 +11,8 @@ public class Vector3 {
         this.z = z;
     }
 
-    public float[][] getVector() {
-        return new float[][]{{x}, {y}, {z}};
+    public float[] getVector() {
+        return new float[]{x, y, z};
     }
 
     //сложение
@@ -20,9 +20,9 @@ public class Vector3 {
         checkArguments(firstVector);
         checkArguments(secondVector);
 
-        float[][] res;
+        float[] res;
         res = Vector.add(firstVector.getVector(), secondVector.getVector());
-        return new Vector3(res[0][0], res[1][0], res[2][0]);
+        return new Vector3(res[0], res[1], res[2]);
     }
 
     //разность
@@ -30,18 +30,16 @@ public class Vector3 {
         checkArguments(firstVector);
         checkArguments(secondVector);
 
-        float[][] res;
-        res = Vector.subtract(firstVector.getVector(), secondVector.getVector());
-        return new Vector3(res[0][0], res[1][0], res[2][0]);
+        float[] res = Vector.subtract(firstVector.getVector(), secondVector.getVector());
+        return new Vector3(res[0], res[1], res[2]);
     }
 
     //умножение на скаляр
     public static Vector3 multiByScalar(Vector3 vector, float scalar) {
         checkArguments(vector);
 
-        float[][] res;
-        res = Vector.multiByScalar(vector.getVector(), scalar);
-        return new Vector3(res[0][0], res[1][0], res[2][0]);
+        float[] res = Vector.multiByScalar(vector.getVector(), scalar);
+        return new Vector3(res[0], res[1], res[2]);
     }
 
     //деление на скаляр
@@ -52,9 +50,8 @@ public class Vector3 {
             throw new ArithmeticException("Деление на ноль невозможно");
         }
 
-        float[][] res;
-        res = Vector.divByScalar(vector.getVector(), scalar);
-        return new Vector3(res[0][0], res[1][0], res[2][0]);
+        float[] res = Vector.divByScalar(vector.getVector(), scalar);
+        return new Vector3(res[0], res[1], res[2]);
     }
 
     //длина
@@ -68,9 +65,8 @@ public class Vector3 {
     public static Vector3 normalization(Vector3 vector) {
         checkArguments(vector);
 
-        float[][] res;
-        res = Vector.normalization(vector.getVector());
-        return new Vector3(res[0][0], res[1][0], res[2][0]);
+        float[] res = Vector.normalization(vector.getVector());
+        return new Vector3(res[0], res[1], res[2]);
     }
 
     //скалярное произведение

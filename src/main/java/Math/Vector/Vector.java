@@ -1,43 +1,84 @@
 package Math.Vector;
-import Math.MatrixAndVector;
 
-public class Vector extends MatrixAndVector{
+public class Vector {
+
+    //сложение
+    public static float[] add(float[] firstObject, float[] secondObject) {
+        int row = firstObject.length;
+
+        float[] add = new float[row];
+
+        for(int i = 0; i < row; i++){
+            add[i] = firstObject[i] + secondObject[i];
+        }
+        return add;
+    }
+
+    //разность
+    public static float[] subtract(float[] firstObject, float[] secondObject) {
+        int row = firstObject.length;
+        float[] subtract = new float[row];
+
+        for(int i = 0; i < row; i++){
+            subtract[i] = firstObject[i] - secondObject[i];
+        }
+        return subtract;
+    }
+
+    //умножение на скаляр
+    public static float[] multiByScalar(float[] object, float scalar) {
+        int row = object.length;
+        float[] multiByScalar = new float[row];
+
+        for(int i = 0; i < row; i++){
+            multiByScalar[i] = object[i] * scalar;
+        }
+        return multiByScalar;
+    }
+
+    //деление на скаляр
+    public static float[] divByScalar(float[] object, float scalar) {
+        int row = object.length;
+
+        float[] divByScalar = new float[row];
+
+        for(int i = 0; i < row; i++){
+            divByScalar[i] = object[i] / scalar;
+        }
+        return divByScalar;
+    }
 
     //длина
-    public static float vectorLength(float[][] vector) {
+    public static float vectorLength(float[] vector) {
         int len = vector.length;
         float sum = 0;
+
         for (int i = 0; i < len; i++){
-            for (int j = 0; j < 1; j++){
-                sum += vector[i][j] * vector[i][j];
-            }
+            sum += vector[i] * vector[i];
         }
         return (float)Math.sqrt(sum);
     }
 
     //нормализация
-    public static float[][] normalization(float[][] vector) {
+    public static float[] normalization(float[] vector) {
         int len = vector.length;
-        float[][] normalizationVector = new float[len][len];
+        float[] normalizationVector = new float[len];
         float vectorLength = vectorLength(vector);
 
         for (int i = 0; i < len; i++){
-            for(int j = 0; j < 1; j++){
-                normalizationVector[i][j] = vector[i][j] / vectorLength;
-            }
+            normalizationVector[i] = vector[i] / vectorLength;
+
         }
         return normalizationVector;
     }
 
     //скалярное произведение
-    public static float scalarMultiplication(float[][] firstVector, float[][] secondVector) {
+    public static float scalarMultiplication(float[] firstVector, float[] secondVector) {
         int len = firstVector.length;
         float scalarMultiplication = 0;
 
         for(int i = 0; i < len; i++){
-            for (int j = 0; j < 1; j++){
-                scalarMultiplication += firstVector[i][j] * secondVector[i][j];
-            }
+            scalarMultiplication += firstVector[i] * secondVector[i];
         }
         return scalarMultiplication;
     }
