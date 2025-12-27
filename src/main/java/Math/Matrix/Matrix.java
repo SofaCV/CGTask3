@@ -1,96 +1,149 @@
 package Math.Matrix;
 
-public abstract class Matrix{
-    //сложение
-    public static float[][] add(float[][] firstObject, float[][] secondObject) {
-        int row = firstObject.length;
-        int col = firstObject[0].length;
-        float[][] add = new float[row][col];
+import Math.Vector.Vector;
 
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                add[i][j] = firstObject[i][j] + secondObject[i][j];
+public abstract class Matrix <T extends Matrix<T>>{
+    private final float[][] matrix;
+
+    public Matrix(float[][] matrix){
+        this.matrix = matrix.clone();
+    }
+
+    public float[][] getMatrix() {
+        return matrix;
+    }
+
+    public abstract T createNewMatrix(float[][] res);
+
+    //сложение
+    public T add(T argument) {
+        checkArguments(argument);
+        float[][] argMatrix = argument.getMatrix();
+        int size = argMatrix.length;
+        float[][] resAdd = new float[size][size];
+
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                resAdd[i][j] = matrix[i][j] + argMatrix[i][j];
             }
         }
-        return add;
+        return createNewMatrix(resAdd);
     }
 
     //разность
-    public static float[][] subtract(float[][] firstObject, float[][] secondObject) {
-        int rows = firstObject.length;
-        int cols = firstObject[0].length;
-        float[][] subtract = new float[rows][cols];
+    public T subtract(T argument) {
+        checkArguments(argument);
+        float[][] argMatrix = argument.getMatrix();
+        int size = argMatrix.length;
+        float[][] resSubtract = new float[size][size];
 
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < cols; j++){
-                subtract[i][j] = firstObject[i][j] - secondObject[i][j];
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                resSubtract[i][j] = matrix[i][j] - argMatrix[i][j];
             }
         }
-        return subtract;
+        return createNewMatrix(resSubtract);
     }
 
     //умножение на скаляр
-    public static float[][] multiByScalar(float[][] matrix, float scalar) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        float[][] multiByScalar = new float[rows][cols];
+    public T multiByScalar(float scalar) {
+        int size = matrix.length;
+        float[][] resMultiByScalar = new float[size][size];
 
-        for(int i = 0; i < rows; i++){
-            for(int j = 0; j < cols; j++){
-                multiByScalar[i][j] = matrix[i][j] * scalar;
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                resMultiByScalar[i][j] = matrix[i][j] * scalar;
             }
         }
-        return multiByScalar;
+        return createNewMatrix(resMultiByScalar);
     }
 
-    //умножение на вектор
-    public static float[] multiByVector(float[][] matrix, float[] vector) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        float[] multiByScalar = new float[rows];
+    public abstract <V extends Vector<V>> V createVector(float[] vector);
 
-        if (cols != vector.length) {
-            throw new IllegalArgumentException(
-                    String.format("Несовместимые размеры: матрица %dx%d, вектор длины %d",
-                            rows, cols, vector.length)
-            );
-        }
+    // Умножение на вектор
+    public <V extends Vector<V>> V multiplyByVector(V vector) {
+        checkArgumentsForVector(vector, matrix.length);
+        float[] vectorArr = vector.getVector();
+        int size = matrix.length;
 
-        for (int i = 0; i < rows; i++) {
+        float[] result = new float[size];
+
+        for (int i = 0; i < size; i++) {
             float sum = 0;
-            for (int j = 0; j < cols; j++) {
-                sum += matrix[i][j] * vector[j];
+            for (int j = 0; j < size; j++) {
+                sum += matrix[i][j] * vectorArr[j];
             }
-            multiByScalar[i] = sum;
+            result[i] = sum;
         }
 
-        return multiByScalar;
+        return createVector(result);
     }
 
     //деление на скаляр
-    public static float[][] divByScalar(float[][] object, float scalar) {
-        int row = object.length;
-        int col = object[0].length;
-        float[][] divByScalar = new float[row][col];
+    public T divByScalar(float scalar) {
+        if (scalar == 0) {
+            throw new ArithmeticException("Деление на ноль невозможно");
+        }
+        int size = matrix.length;
+        float[][] divByScalar = new float[size][size];
 
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                divByScalar[i][j] = object[i][j] / scalar;
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                divByScalar[i][j] = matrix[i][j] / scalar;
             }
         }
-        return divByScalar;
+        return createNewMatrix(divByScalar);
     }
-    //транспонирование
-    public static float[][] transposition(float[][] matrix) {
-        int len = matrix.length;
-        float buffer;
-        for (int i = 0; i < len; i++) {
-            for (int j = i + 1; j < len; j++) {
-                buffer = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = buffer;
+
+    //умножение матриц
+    public T mult(T argument){
+        checkArguments(argument);
+        float[][] argMatrix = argument.getMatrix();
+        int size = argMatrix.length;
+        float[][] mult = new float[size][size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                float sum = 0;
+                for (int k = 0; k < size; k++) {
+                    sum += matrix[i][k] * argMatrix[k][j];
+                }
+                mult[i][j] = sum;
             }
         }
-        return matrix;
+        return createNewMatrix(mult);
+    }
+
+    //транспонирование
+    public T transposition() {
+        int size = matrix.length;
+        float[][] transposition = new float[size][size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                transposition[i][j] = matrix[j][i];
+            }
+        }
+        return createNewMatrix(transposition);
+    }
+
+    //исключения на проверку входных данных
+    private void checkArguments(T argument){
+        if (argument == null) {
+            throw new IllegalArgumentException("аргумент не может быть null");
+        }
+    }
+
+    private <V extends Vector<V>> void checkArgumentsForVector(V argument, int size) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Вектор не может быть null");
+        }
+        int length = argument.getVector().length;
+        if(length != size){
+            throw new IllegalArgumentException(
+                    String.format("Несовместимые размеры: матрица %dx%d, вектор длины %d",
+                            size, size, length)
+            );
+        }
     }
 }

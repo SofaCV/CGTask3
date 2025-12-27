@@ -1,6 +1,6 @@
 package Math.Vector;
 
-public abstract class Vector<T extends Vector<T>> {
+public abstract class Vector<T extends Vector<T>>{
     private final float[] vector;
 
     protected Vector(float[] vector){
@@ -16,11 +16,12 @@ public abstract class Vector<T extends Vector<T>> {
     //сложение
     public T add(T argument) {
         checkArguments(argument);
-        int len = argument.getVector().length;
+        float[] argVector = argument.getVector();
+        int len = argVector.length;
         float[] resAdd = new float[len];
 
         for(int i = 0; i < len; i++){
-            resAdd[i] = vector[i] + argument.getVector()[i];
+            resAdd[i] = vector[i] + argVector[i];
         }
         return createNewVector(resAdd);
     }
@@ -28,11 +29,12 @@ public abstract class Vector<T extends Vector<T>> {
     //разность
     public T subtract(T argument) {
         checkArguments(argument);
-        int len = argument.getVector().length;
+        float[] argVector = argument.getVector();
+        int len = argVector.length;
         float[] resSubtract = new float[len];
 
         for(int i = 0; i < len; i++){
-            resSubtract[i] = vector[i] - argument.getVector()[i];
+            resSubtract[i] = vector[i] - argVector[i];
         }
         return createNewVector(resSubtract);
     }
@@ -87,11 +89,12 @@ public abstract class Vector<T extends Vector<T>> {
     //скалярное произведение
     public float scalarMultiplication(T argument) {
         checkArguments(argument);
-        int len = argument.getVector().length;
+        float[] argVector = argument.getVector();
+        int len = argVector.length;
         float scalarMultiplication = 0;
 
         for(int i = 0; i < len; i++){
-            scalarMultiplication += vector[i] * argument.getVector()[i];
+            scalarMultiplication += vector[i] * argVector[i];
         }
         return scalarMultiplication;
     }
