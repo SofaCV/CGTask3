@@ -18,6 +18,9 @@ public class Matrix3 extends Matrix<Matrix3>{
 
     @Override
     public Matrix3 createNewMatrix(float[][] res) {
+        if (res.length != 3 || res[0].length != 3){
+            throw new IllegalArgumentException("Ошибка в количестве аргументов. Трехмерная матрица содержит 9 элементов");
+        }
         return new Matrix3(
                 res[0][0], res[0][1], res[0][2],
                 res[1][0], res[1][1], res[1][2],
@@ -28,6 +31,9 @@ public class Matrix3 extends Matrix<Matrix3>{
 
     @Override
     public <V extends Vector<V>> V createVector(float[] vector) {
+        if (vector.length != 3){
+            throw new IllegalArgumentException("Ошибка в количестве координат. Трехмерный вектор имеет 3 координаты");
+        }
         return (V) new Vector3(vector[0], vector[1], vector[2]);
     }
 

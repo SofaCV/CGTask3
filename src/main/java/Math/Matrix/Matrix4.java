@@ -20,6 +20,9 @@ public class Matrix4 extends Matrix<Matrix4>{
 
     @Override
     public Matrix4 createNewMatrix(float[][] res) {
+        if (res.length != 4 || res[0].length != 4){
+            throw new IllegalArgumentException("Ошибка в количестве аргументов. Четырехмерная матрица содержит 16 элементов");
+        }
         return new Matrix4(
                 res[0][0], res[0][1], res[0][2], res[0][3],
                 res[1][0], res[1][1], res[1][2], res[1][3],
@@ -30,6 +33,9 @@ public class Matrix4 extends Matrix<Matrix4>{
 
     @Override
     public <V extends Vector<V>> V createVector(float[] vector) {
+        if (vector.length != 4){
+            throw new IllegalArgumentException("Ошибка в количестве координат. Четырехмерный вектор имеет 4 координаты");
+        }
         return (V)new Vector4(vector[0], vector[1], vector[2], vector[3]);
     }
 
