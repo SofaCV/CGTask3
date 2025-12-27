@@ -127,4 +127,24 @@ class Vector3Test {
         );
         assertEquals("аргумент не может быть null", exception.getMessage());
     }
+
+    @Test
+    void vectorMult(){
+        Vector3 vector1 = new Vector3(1,2,3);
+        Vector3 vector2 = new Vector3(-1,-2,-3);
+        Vector3 vector3 = null;
+        float[] res = {0, 0, 0};
+
+        float[] check = vector1.vectorMult(vector2).getVector();
+        assertEquals(check[0], res[0], 10e-8);
+        assertEquals(check[1], res[1], 10e-8);
+        assertEquals(check[2], res[2], 10e-8);
+
+        //проверка исключений
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> vector1.scalarMultiplication(vector3)
+        );
+        assertEquals("аргумент не может быть null", exception.getMessage());
+    }
 }

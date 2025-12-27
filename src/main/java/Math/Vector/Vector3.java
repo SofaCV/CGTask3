@@ -17,4 +17,16 @@ public class Vector3 extends Vector<Vector3>{
         }
         return new Vector3(result[0], result[1], result[2]);
     }
+
+    public Vector3 vectorMult(Vector3 argument) {
+        float[] vector1 = this.getVector();
+        float[] vector2 = argument.getVector();
+
+        float[] result = new float[3];
+        result[0] = vector1[1] * vector2[2] - vector1[2] * vector2[1]; // x-компонента
+        result[1] = vector1[2] * vector2[0] - vector1[0] * vector2[2]; // y-компонента
+        result[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0]; // z-компонента
+
+        return createNewVector(result);
+    }
 }
